@@ -33,8 +33,7 @@ class Saved extends Component {
     console.log(bookID);
     Axios.delete("/api/saved/" + bookID)
     .then(response => {
-      console.log(response);
-      window.open("/saved");
+      window.location.replace("/saved");
     })
     .catch(err => {
       console.log(err)

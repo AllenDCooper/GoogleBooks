@@ -48,7 +48,7 @@ class Search extends Component {
     })
     .then(response => {
       console.log(response);
-      window.open("/saved");
+      window.location.replace("/saved");
     })
     .catch(err => {
       console.log(err)
