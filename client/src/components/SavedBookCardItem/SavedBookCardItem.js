@@ -61,7 +61,7 @@ export function SavedBookCardItem(props) {
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             <img className={classes.thumbnailImg} src={props.imageLink} alt="thumbnail" />
-            {props.descriptions}
+            {props.description}
           </Typography>
         </CardContent>
       </CardActionArea>
