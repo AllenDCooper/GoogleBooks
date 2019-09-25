@@ -21,7 +21,7 @@ class Search extends Component {
       searchTerm: value
     })
   }
-
+  
   getBooks = (event) => {
     event.preventDefault();
     let queryTerm = this.state.searchTerm.replace(/\s+/g, '+').toLowerCase()
@@ -40,6 +40,19 @@ class Search extends Component {
         })
     });
   };
+
+  saveBook = (id) => {
+    console.log(id);
+    Axios.post("/api/saved/", {
+      bookData: this.state.foundBooks[id]
+    })
+    .then(response => {
+      console.log(response)
+    })
+    .catch(err => {
+      console.log(err)
+    }) 
+  }
 
   render() {
     return(
@@ -62,8 +75,8 @@ class Search extends Component {
             </Button>
           </form>
           <BookCardContainer>
-            {this.state.foundBooks.map(item => (
-              <BookCardItem id={item.id} title={item.volumeInfo.title} authors={item.volumeInfo.authors.join(", ")} desc={item.volumeInfo.description} image={item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"}  link={item.volumeInfo.previewLink}/>
+            {this.state.foundBooks.map( (item, iterator) => (
+              <BookCardItem bookElement={item} id={iterator} title={item.volumeInfo.title} authors={item.volumeInfo.authors.join(", ")} desc={item.volumeInfo.description} image={item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"}  link={item.volumeInfo.previewLink} saveBookFunction={this.saveBook} />
             ))}
           </BookCardContainer>
         </Container>

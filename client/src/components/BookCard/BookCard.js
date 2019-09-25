@@ -66,8 +66,11 @@ export function BookCardItem(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button href={props.link} target="_blank" size="small" color="primary">
+        <Button href={props.link} target="_blank" color="primary">
           Preview Link
+        </Button>
+        <Button id={props.id} color="secondary" onClick={ () => props.saveBookFunction(props.id)}>
+          Save
         </Button>
       </CardActions>
     </Card>
