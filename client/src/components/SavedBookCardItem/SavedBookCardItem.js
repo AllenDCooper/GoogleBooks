@@ -66,7 +66,7 @@ export function SavedBookCardItem(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button href={props.link} target="_blank" color="primary">
+        <Button href={props.infoLink} target="_blank" color="primary">
           Preview Link
         </Button>
         <Button id={props.id} color="secondary" onClick={ () => props.deleteBookFunction(props.id)}>
