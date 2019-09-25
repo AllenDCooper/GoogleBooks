@@ -8,4 +8,4 @@ A single page application (SPA) built with React.js and Material UI that allows 
  * onClick callback functions are passed as props into the SavedBookCard and BookCard children components to run axios calls to save or delete the clicked card from the database
 
 ## Functionality
-![Screenshot of Game](./public/assets/images/screencast.gif)
+![Screenshot of Game](./app-screenshot.gif)
