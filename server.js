@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
 
 // Define API routes here
 // save a book
-app.post("/api/saved/", function(req, res) {
+app.post("/api/saved", function(req, res) {
   console.log(req);
   Books.create({
     title: req.body.bookData.volumeInfo.title,
@@ -39,8 +39,11 @@ app.get("/api/saved", function(req, res) {
   .catch(err => res.status(422).json(err))
 })
 
-app.delete("/api/saved", function(req, res) {
-
+app.delete("/api/saved/:id", function(req, res) {
+  console.log(req.bookID)
+  Books.findOneAndDelete({ _id: req.params.id})
+  .then(res.send("book deleted"))
+  .catch(err => res.status(422).json(err))
 })
 
 // Send every other request to the React app

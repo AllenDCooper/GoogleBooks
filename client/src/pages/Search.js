@@ -43,11 +43,12 @@ class Search extends Component {
 
   saveBook = (id) => {
     console.log(id);
-    Axios.post("/api/saved/", {
+    Axios.post("/api/saved", {
       bookData: this.state.foundBooks[id]
     })
     .then(response => {
-      console.log(response)
+      console.log(response);
+      window.open("/saved");
     })
     .catch(err => {
       console.log(err)
@@ -76,7 +77,7 @@ class Search extends Component {
           </form>
           <BookCardContainer>
             {this.state.foundBooks.map( (item, iterator) => (
-              <BookCardItem bookElement={item} id={iterator} title={item.volumeInfo.title} authors={item.volumeInfo.authors.join(", ")} desc={item.volumeInfo.description} image={item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"}  link={item.volumeInfo.previewLink} saveBookFunction={this.saveBook} />
+              <BookCardItem bookElement={item} id={iterator} title={item.volumeInfo.title} authors={item.volumeInfo.authors.join(", ")} description={item.volumeInfo.description} imageLink={item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"}  link={item.volumeInfo.previewLink} saveBookFunction={this.saveBook} />
             ))}
           </BookCardContainer>
         </Container>

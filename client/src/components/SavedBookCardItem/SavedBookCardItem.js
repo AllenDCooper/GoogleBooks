@@ -31,7 +31,7 @@ const useStyles = makeStyles({
   }
 });
 
-export function BookCardContainer({children}) {
+export function SavedBookCardContainer({children}) {
   const classes = useStyles();
   return (
     <Grid className={classes.cardContainer}
@@ -47,7 +47,7 @@ export function BookCardContainer({children}) {
   )
 }
 
-export function BookCardItem(props) {
+export function SavedBookCardItem(props) {
   const classes = useStyles();
   return(
     <Card className={classes.card}>
@@ -69,8 +69,8 @@ export function BookCardItem(props) {
         <Button href={props.link} target="_blank" color="primary">
           Preview Link
         </Button>
-        <Button id={props.id} color="secondary" onClick={ () => props.saveBookFunction(props.id)}>
-          Save
+        <Button id={props.id} color="secondary" onClick={ () => props.deleteBookFunction(props.id)}>
+          Delete
         </Button>
       </CardActions>
     </Card>
